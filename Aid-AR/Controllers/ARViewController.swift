@@ -10,6 +10,7 @@ import UIKit
 import SceneKit
 import ARCL
 import CoreLocation
+import Alamofire
 
 class ARViewController: UIViewController, SceneLocationViewDelegate {
     
