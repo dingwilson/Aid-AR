@@ -41,6 +41,10 @@ class ARViewController: UIViewController, SceneLocationViewDelegate {
         sceneLocationView.frame = arView.bounds
     }
     
+    @IBAction func dismissVC(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: - SceneLocationViewDelegat
     
     func sceneLocationViewDidAddSceneLocationEstimate(sceneLocationView: SceneLocationView, position: SCNVector3, location: CLLocation) {
