@@ -12,6 +12,9 @@
 		C80291151F801E0B0072E2D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C80291141F801E0B0072E2D2 /* Assets.xcassets */; };
 		C80291181F801E0B0072E2D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C80291161F801E0B0072E2D2 /* LaunchScreen.storyboard */; };
 		C80291241F8020BA0072E2D2 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80291231F8020BA0072E2D2 /* ARViewController.swift */; };
+		C80291261F8028630072E2D2 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80291251F8028630072E2D2 /* SplashViewController.swift */; };
+		C80291291F802BDC0072E2D2 /* SwiftVideoBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80291281F802BDC0072E2D2 /* SwiftVideoBackground.swift */; };
+		C802912C1F802E330072E2D2 /* Background.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C802912B1F802E330072E2D2 /* Background.mp4 */; };
 		CF813C3D80DB1604429229A0 /* Pods_Aid_AR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44023A8627D6122BD15C3F53 /* Pods_Aid_AR.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +29,9 @@
 		C80291171F801E0B0072E2D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C80291191F801E0B0072E2D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C80291231F8020BA0072E2D2 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ARViewController.swift; path = Controllers/ARViewController.swift; sourceTree = "<group>"; };
+		C80291251F8028630072E2D2 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SplashViewController.swift; path = Controllers/SplashViewController.swift; sourceTree = "<group>"; };
+		C80291281F802BDC0072E2D2 /* SwiftVideoBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SwiftVideoBackground.swift; path = Controllers/SwiftVideoBackground.swift; sourceTree = "<group>"; };
+		C802912B1F802E330072E2D2 /* Background.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Background.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,9 +76,12 @@
 		C802910C1F801E0B0072E2D2 /* Aid-AR */ = {
 			isa = PBXGroup;
 			children = (
+				C80291281F802BDC0072E2D2 /* SwiftVideoBackground.swift */,
+				C80291251F8028630072E2D2 /* SplashViewController.swift */,
 				C80291231F8020BA0072E2D2 /* ARViewController.swift */,
 				C802910D1F801E0B0072E2D2 /* AppDelegate.swift */,
 				C80291111F801E0B0072E2D2 /* Main.storyboard */,
+				C802912B1F802E330072E2D2 /* Background.mp4 */,
 				C80291141F801E0B0072E2D2 /* Assets.xcassets */,
 				C80291161F801E0B0072E2D2 /* LaunchScreen.storyboard */,
 				C80291191F801E0B0072E2D2 /* Info.plist */,
@@ -151,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C80291181F801E0B0072E2D2 /* LaunchScreen.storyboard in Resources */,
+				C802912C1F802E330072E2D2 /* Background.mp4 in Resources */,
 				C80291151F801E0B0072E2D2 /* Assets.xcassets in Resources */,
 				C80291131F801E0B0072E2D2 /* Main.storyboard in Resources */,
 			);
@@ -217,6 +227,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C80291261F8028630072E2D2 /* SplashViewController.swift in Sources */,
+				C80291291F802BDC0072E2D2 /* SwiftVideoBackground.swift in Sources */,
 				C802910E1F801E0B0072E2D2 /* AppDelegate.swift in Sources */,
 				C80291241F8020BA0072E2D2 /* ARViewController.swift in Sources */,
 			);

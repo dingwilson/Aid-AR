@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="STK-Mc-0NY">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -8,7 +8,76 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
     <scenes>
+        <!--Splash View Controller-->
+        <scene sceneID="uOo-TS-iBZ">
+            <objects>
+                <viewController id="STK-Mc-0NY" customClass="SplashViewController" customModule="Aid_AR" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="PB9-W8-d9H">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YH4-fY-LIO" customClass="BackgroundVideo" customModule="Aid_AR" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r0F-Fb-QLO">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="331"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="331" id="V4D-R1-c9c"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="50"/>
+                                        <state key="normal" title="Give Aid">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="BYZ-38-t0r" kind="show" id="0TE-Fv-USZ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zUM-EF-0Wa">
+                                        <rect key="frame" x="0.0" y="331" width="375" height="336"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="50"/>
+                                        <state key="normal" title="Get Aid">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="iHh-G0-8Qn" kind="show" id="NZJ-gi-dH4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="r0F-Fb-QLO" firstAttribute="leading" secondItem="YH4-fY-LIO" secondAttribute="leading" id="6Gk-e6-x6j"/>
+                                    <constraint firstItem="r0F-Fb-QLO" firstAttribute="leading" secondItem="zUM-EF-0Wa" secondAttribute="leading" id="AgY-qZ-BUN"/>
+                                    <constraint firstItem="zUM-EF-0Wa" firstAttribute="top" secondItem="r0F-Fb-QLO" secondAttribute="bottom" id="J7w-IV-bXS"/>
+                                    <constraint firstItem="r0F-Fb-QLO" firstAttribute="trailing" secondItem="zUM-EF-0Wa" secondAttribute="trailing" id="KMA-ix-HoA"/>
+                                    <constraint firstAttribute="bottom" secondItem="zUM-EF-0Wa" secondAttribute="bottom" id="aWy-Cs-V4c"/>
+                                    <constraint firstItem="r0F-Fb-QLO" firstAttribute="top" secondItem="YH4-fY-LIO" secondAttribute="top" id="gcR-1F-6zf"/>
+                                    <constraint firstAttribute="trailing" secondItem="r0F-Fb-QLO" secondAttribute="trailing" id="qn0-H6-TNZ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YH4-fY-LIO" firstAttribute="top" secondItem="PB9-W8-d9H" secondAttribute="top" id="0Ja-x8-PoZ"/>
+                            <constraint firstItem="YH4-fY-LIO" firstAttribute="leading" secondItem="PB9-W8-d9H" secondAttribute="leading" id="TW9-DG-70j"/>
+                            <constraint firstItem="YH4-fY-LIO" firstAttribute="bottom" secondItem="GK8-4u-tBa" secondAttribute="bottom" id="XiC-tw-qTT"/>
+                            <constraint firstAttribute="trailing" secondItem="YH4-fY-LIO" secondAttribute="trailing" id="pP3-5Z-sgG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GK8-4u-tBa"/>
+                    </view>
+                    <connections>
+                        <outlet property="backgroundVideo" destination="YH4-fY-LIO" id="Hlu-aV-rpM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QYD-gS-b06" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1010.4" y="33.733133433283363"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -37,7 +106,22 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="37.600000000000001" y="33.733133433283363"/>
+            <point key="canvasLocation" x="518" y="-477"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="upl-Xh-Cm8">
+            <objects>
+                <viewController id="iHh-G0-8Qn" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kmU-KM-v2Y">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="fdQ-b9-6sd"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WrY-0a-QGh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="518" y="392"/>
         </scene>
     </scenes>
 </document>
