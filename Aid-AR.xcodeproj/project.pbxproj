@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		C802910E1F801E0B0072E2D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C802910D1F801E0B0072E2D2 /* AppDelegate.swift */; };
-		C80291101F801E0B0072E2D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C802910F1F801E0B0072E2D2 /* ViewController.swift */; };
 		C80291131F801E0B0072E2D2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C80291111F801E0B0072E2D2 /* Main.storyboard */; };
 		C80291151F801E0B0072E2D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C80291141F801E0B0072E2D2 /* Assets.xcassets */; };
 		C80291181F801E0B0072E2D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C80291161F801E0B0072E2D2 /* LaunchScreen.storyboard */; };
+		C80291241F8020BA0072E2D2 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80291231F8020BA0072E2D2 /* ARViewController.swift */; };
 		CF813C3D80DB1604429229A0 /* Pods_Aid_AR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44023A8627D6122BD15C3F53 /* Pods_Aid_AR.framework */; };
 /* End PBXBuildFile section */
 
@@ -21,11 +21,11 @@
 		B53EF8FA095DE3B8215B83DE /* Pods-Aid-AR.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Aid-AR.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Aid-AR/Pods-Aid-AR.debug.xcconfig"; sourceTree = "<group>"; };
 		C802910A1F801E0B0072E2D2 /* Aid-AR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Aid-AR.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C802910D1F801E0B0072E2D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C802910F1F801E0B0072E2D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C80291121F801E0B0072E2D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C80291141F801E0B0072E2D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C80291171F801E0B0072E2D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C80291191F801E0B0072E2D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C80291231F8020BA0072E2D2 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ARViewController.swift; path = Controllers/ARViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,8 +70,8 @@
 		C802910C1F801E0B0072E2D2 /* Aid-AR */ = {
 			isa = PBXGroup;
 			children = (
+				C80291231F8020BA0072E2D2 /* ARViewController.swift */,
 				C802910D1F801E0B0072E2D2 /* AppDelegate.swift */,
-				C802910F1F801E0B0072E2D2 /* ViewController.swift */,
 				C80291111F801E0B0072E2D2 /* Main.storyboard */,
 				C80291141F801E0B0072E2D2 /* Assets.xcassets */,
 				C80291161F801E0B0072E2D2 /* LaunchScreen.storyboard */,
@@ -217,8 +217,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C80291101F801E0B0072E2D2 /* ViewController.swift in Sources */,
 				C802910E1F801E0B0072E2D2 /* AppDelegate.swift in Sources */,
+				C80291241F8020BA0072E2D2 /* ARViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
