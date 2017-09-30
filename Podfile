@@ -8,5 +8,6 @@ target 'Aid-AR' do
   # Pods for Aid-AR
   pod 'ARCL'
   pod 'Alamofire', '~> 4.5'
+  pod 'SwiftyJSON'
 
 end

@@ -11,6 +11,7 @@ import SceneKit
 import ARCL
 import CoreLocation
 import Alamofire
+import SwiftyJSON
 
 class ARViewController: UIViewController, SceneLocationViewDelegate {
     
@@ -20,20 +21,34 @@ class ARViewController: UIViewController, SceneLocationViewDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
         sceneLocationView.run()
         
-        let coordinate = CLLocationCoordinate2D(latitude: 32.7333446, longitude: -97.1105474)
-        let location = CLLocation(coordinate: coordinate, altitude: 300)
-        let image = UIImage(named: "pin")!
-        
-        let annotationNode = LocationAnnotationNode(location: location, image: image)
-    
-        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
-        
         arView.addSubview(sceneLocationView)
+        
+        Alamofire.request("https://mryktvov7a.execute-api.us-east-1.amazonaws.com/prod/users?getaids=true").responseJSON { response in
+            
+            guard let jsonData = response.result.value else {
+                print("JSON parse failed")
+                return
+            }
+
+            let json = JSON(jsonData)
+            
+            for (_,user):(String, JSON) in json {
+                let latitude = user["latitude"].double
+                let longitude = user["longitude"].double
+                let username = user["username"].string
+                
+                let coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude!), longitude: CLLocationDegrees(longitude!))
+                let location = CLLocation(coordinate: coordinate, altitude: 300)
+                let image = UIImage(named: "pin")!
+                
+                let annotationNode = LocationAnnotationNode(location: location, image: image)
+                
+                self.sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
+            }
+        }
     }
     
     override func viewDidLayoutSubviews() {
