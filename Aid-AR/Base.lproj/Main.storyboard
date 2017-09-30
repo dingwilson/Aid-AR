@@ -138,14 +138,39 @@
             </objects>
             <point key="canvasLocation" x="517.60000000000002" y="-477.21139430284859"/>
         </scene>
-        <!--View Controller-->
+        <!--Assistance View Controller-->
         <scene sceneID="upl-Xh-Cm8">
             <objects>
-                <viewController id="iHh-G0-8Qn" sceneMemberID="viewController">
+                <viewController id="iHh-G0-8Qn" customClass="AssistanceViewController" customModule="Aid_AR" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kmU-KM-v2Y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LUE-Op-Dty">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xmY-jh-3nN">
+                                        <rect key="frame" x="8" y="28" width="48" height="48"/>
+                                        <state key="normal" image="backArrow"/>
+                                        <connections>
+                                            <action selector="dismissVC:" destination="iHh-G0-8Qn" eventType="touchUpInside" id="QLa-kL-YFg"/>
+                                            <action selector="dismissVC:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZF8-Pg-XZm"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="xmY-jh-3nN" firstAttribute="top" secondItem="LUE-Op-Dty" secondAttribute="topMargin" id="3mM-kb-VeN"/>
+                                    <constraint firstItem="xmY-jh-3nN" firstAttribute="leading" secondItem="LUE-Op-Dty" secondAttribute="leadingMargin" id="hLf-A5-7pZ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="LUE-Op-Dty" secondAttribute="trailing" id="4fH-yr-Fwj"/>
+                            <constraint firstItem="LUE-Op-Dty" firstAttribute="bottom" secondItem="fdQ-b9-6sd" secondAttribute="bottom" id="BE1-0d-0of"/>
+                            <constraint firstItem="LUE-Op-Dty" firstAttribute="top" secondItem="kmU-KM-v2Y" secondAttribute="top" id="Otg-Q6-gGH"/>
+                            <constraint firstItem="LUE-Op-Dty" firstAttribute="leading" secondItem="kmU-KM-v2Y" secondAttribute="leading" id="Udh-C4-pzf"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="fdQ-b9-6sd"/>
                     </view>
                 </viewController>
