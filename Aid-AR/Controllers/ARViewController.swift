@@ -42,7 +42,15 @@ class ARViewController: UIViewController, SceneLocationViewDelegate {
                 
                 let coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude!), longitude: CLLocationDegrees(longitude!))
                 let location = CLLocation(coordinate: coordinate, altitude: 300)
-                let image = UIImage(named: "pin")!
+                
+                let distance = (self.sceneLocationView.currentLocation()?.distance(from: CLLocation(latitude: latitude!, longitude: longitude!)))!/1609    // meters to miles
+                
+                let stringFormattedDistance = String(format: "%.01f", distance)
+                
+                guard let image = self.createFinalImageWith(text: "\(username!)\n\(stringFormattedDistance) miles") else {
+                    print("Failed to add text to image")
+                    return
+                }
                 
                 let annotationNode = LocationAnnotationNode(location: location, image: image)
                 
@@ -55,6 +63,47 @@ class ARViewController: UIViewController, SceneLocationViewDelegate {
         super.viewDidLayoutSubviews()
         
         sceneLocationView.frame = arView.bounds
+    }
+    
+    func createFinalImageWith(text: String) -> UIImage? {
+        
+        let image = UIImage(named: "pin")
+        
+        let viewToRender = UIView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
+        
+        let imgView = UIImageView(frame: viewToRender.frame)
+        
+        imgView.image = image
+        
+        viewToRender.addSubview(imgView)
+        
+        let textImgView = UIImageView(frame: viewToRender.frame)
+        
+        textImgView.image = imageFrom(text: text, size: viewToRender.frame.size)
+        
+        viewToRender.addSubview(textImgView)
+        
+        UIGraphicsBeginImageContextWithOptions(viewToRender.frame.size, false, 0)
+        viewToRender.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let finalImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return finalImage
+    }
+    
+    func imageFrom(text: String , size:CGSize) -> UIImage {
+        
+        let renderer = UIGraphicsImageRenderer(size: size)
+        let img = renderer.image { ctx in
+            let paragraphStyle = NSMutableParagraphStyle()
+            paragraphStyle.alignment = .center
+            
+            let attrs = [NSAttributedStringKey.font: UIFont(name: "HelveticaNeue", size: 24)!, NSAttributedStringKey.foregroundColor: UIColor.lightGray, NSAttributedStringKey.paragraphStyle: paragraphStyle]
+            
+            text.draw(with: CGRect(x: 0, y: size.height / 4, width: size.width, height: size.height), options: .usesLineFragmentOrigin, attributes: attrs, context: nil)
+            
+        }
+        return img
     }
     
     @IBAction func dismissVC(_ sender: Any) {
