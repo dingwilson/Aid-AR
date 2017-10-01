@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import CoreLocation
 import Mapbox
+import PKHUD
 
 class AssistanceViewController: UIViewController, CLLocationManagerDelegate, MGLMapViewDelegate, UITextFieldDelegate {
     @IBOutlet weak var nameTextField: UITextField!
@@ -17,6 +18,8 @@ class AssistanceViewController: UIViewController, CLLocationManagerDelegate, MGL
     @IBOutlet weak var requestHelpButton: UIButton!
     
     @IBOutlet weak var mapView: UIView!
+    
+    @IBOutlet weak var overlayView: UIView!
     
     var compass : MBXRectangularMapView!
     
@@ -46,6 +49,11 @@ class AssistanceViewController: UIViewController, CLLocationManagerDelegate, MGL
         compass.tintColor = .black
         compass.delegate = self
         mapView.addSubview(compass)
+        
+        HUD.dimsBackground = false
+        HUD.allowsInteraction = true
+        
+        overlayView.isHidden = true
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         mapView.addGestureRecognizer(tapGesture)
@@ -104,8 +112,13 @@ class AssistanceViewController: UIViewController, CLLocationManagerDelegate, MGL
         
         if currentlyRequestingAid {
             requestHelpButton.setTitle("You're in good hands.", for: .normal)
+            overlayView.isHidden = false
+            HUD.show(.progress)
         } else {
             requestHelpButton.setTitle("Request Help", for: .normal)
+            HUD.show(.error)
+            overlayView.isHidden = true
+            HUD.hide(afterDelay: 2.0)
         }
     }
     

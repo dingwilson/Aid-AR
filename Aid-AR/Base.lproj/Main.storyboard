@@ -163,7 +163,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xmY-jh-3nN">
                                         <rect key="frame" x="8" y="28" width="48" height="48"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="48" id="eBe-yi-5W2"/>
+                                            <constraint firstAttribute="width" constant="48" id="zd3-Dp-lOU"/>
                                         </constraints>
                                         <state key="normal" image="backArrow"/>
                                         <connections>
@@ -175,7 +175,7 @@
                                         <rect key="frame" x="8" y="565" width="359" height="94"/>
                                         <color key="backgroundColor" red="0.80687338082901561" green="0.23709271452234382" blue="0.084967591916580501" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="94" id="JcP-bK-XnV"/>
+                                            <constraint firstAttribute="height" constant="94" id="ODX-zn-3oL"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                         <state key="normal" title="Request Help">
@@ -186,7 +186,7 @@
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bHC-Zd-E7U">
-                                        <rect key="frame" x="64" y="32" width="303" height="40"/>
+                                        <rect key="frame" x="64" y="32" width="293" height="40"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -194,36 +194,61 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R2R-zd-97W">
                                         <rect key="frame" x="8" y="84" width="359" height="473"/>
                                     </view>
+                                    <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JOG-2i-QL3">
+                                        <rect key="frame" x="8" y="28" width="359" height="529"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finding a local Aid-AR dispatch..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4OR-4P-vtw">
+                                                <rect key="frame" x="8" y="453" width="343" height="50"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="tXt-Yl-kZR"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="4OR-4P-vtw" firstAttribute="trailing" secondItem="JOG-2i-QL3" secondAttribute="trailingMargin" id="H1x-T2-lNs"/>
+                                            <constraint firstItem="4OR-4P-vtw" firstAttribute="leading" secondItem="JOG-2i-QL3" secondAttribute="leadingMargin" id="MdO-lh-KpF"/>
+                                            <constraint firstAttribute="bottom" secondItem="4OR-4P-vtw" secondAttribute="bottom" constant="26" id="sms-e1-I4F"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="xmY-jh-3nN" firstAttribute="leading" secondItem="R2R-zd-97W" secondAttribute="leading" id="04Y-y7-yGR"/>
-                                    <constraint firstItem="bHC-Zd-E7U" firstAttribute="trailing" secondItem="R2R-zd-97W" secondAttribute="trailing" id="58r-w8-fAd"/>
-                                    <constraint firstItem="gzA-tu-1aF" firstAttribute="bottom" secondItem="LUE-Op-Dty" secondAttribute="bottomMargin" id="Nom-ap-s1S"/>
-                                    <constraint firstItem="xmY-jh-3nN" firstAttribute="centerY" secondItem="bHC-Zd-E7U" secondAttribute="centerY" id="Q1V-9r-tSO"/>
-                                    <constraint firstItem="xmY-jh-3nN" firstAttribute="leading" secondItem="LUE-Op-Dty" secondAttribute="leadingMargin" id="QGI-mF-FQq"/>
-                                    <constraint firstItem="gzA-tu-1aF" firstAttribute="top" secondItem="R2R-zd-97W" secondAttribute="bottom" constant="8" symbolic="YES" id="U4a-Y9-DtZ"/>
-                                    <constraint firstItem="R2R-zd-97W" firstAttribute="top" secondItem="xmY-jh-3nN" secondAttribute="bottom" constant="8" symbolic="YES" id="aFR-Fd-qsh"/>
-                                    <constraint firstItem="R2R-zd-97W" firstAttribute="leading" secondItem="gzA-tu-1aF" secondAttribute="leading" id="dEk-OK-HcS"/>
-                                    <constraint firstItem="bHC-Zd-E7U" firstAttribute="leading" secondItem="xmY-jh-3nN" secondAttribute="trailing" constant="8" symbolic="YES" id="gk3-AF-KTz"/>
-                                    <constraint firstItem="R2R-zd-97W" firstAttribute="trailing" secondItem="gzA-tu-1aF" secondAttribute="trailing" id="hn8-uI-epU"/>
-                                    <constraint firstItem="xmY-jh-3nN" firstAttribute="top" secondItem="LUE-Op-Dty" secondAttribute="topMargin" id="owP-tN-Gat"/>
-                                    <constraint firstItem="bHC-Zd-E7U" firstAttribute="trailing" secondItem="LUE-Op-Dty" secondAttribute="trailingMargin" id="wuG-EN-c87"/>
+                                    <constraint firstItem="JOG-2i-QL3" firstAttribute="trailing" secondItem="R2R-zd-97W" secondAttribute="trailing" id="2Tl-Lt-fNb"/>
+                                    <constraint firstItem="gzA-tu-1aF" firstAttribute="top" secondItem="JOG-2i-QL3" secondAttribute="bottom" constant="8" symbolic="YES" id="5oO-o7-ERb"/>
+                                    <constraint firstItem="xmY-jh-3nN" firstAttribute="centerY" secondItem="bHC-Zd-E7U" secondAttribute="centerY" id="8Zg-OO-oqG"/>
+                                    <constraint firstItem="JOG-2i-QL3" firstAttribute="leading" secondItem="LUE-Op-Dty" secondAttribute="leadingMargin" id="FxB-GM-Mfp"/>
+                                    <constraint firstItem="xmY-jh-3nN" firstAttribute="leading" secondItem="R2R-zd-97W" secondAttribute="leading" id="K3y-YE-hdx"/>
+                                    <constraint firstItem="R2R-zd-97W" firstAttribute="trailing" secondItem="gzA-tu-1aF" secondAttribute="trailing" id="Kl9-XI-QfX"/>
+                                    <constraint firstAttribute="trailing" secondItem="bHC-Zd-E7U" secondAttribute="trailing" constant="18" id="MDs-NL-nU1"/>
+                                    <constraint firstItem="xmY-jh-3nN" firstAttribute="top" secondItem="JOG-2i-QL3" secondAttribute="top" id="Nd0-3e-TxG"/>
+                                    <constraint firstItem="gzA-tu-1aF" firstAttribute="bottom" secondItem="LUE-Op-Dty" secondAttribute="bottomMargin" id="XoG-AA-OvO"/>
+                                    <constraint firstItem="R2R-zd-97W" firstAttribute="leading" secondItem="gzA-tu-1aF" secondAttribute="leading" id="aGS-aW-krA"/>
+                                    <constraint firstItem="R2R-zd-97W" firstAttribute="top" secondItem="xmY-jh-3nN" secondAttribute="bottom" constant="8" symbolic="YES" id="nSZ-1u-HD4"/>
+                                    <constraint firstItem="xmY-jh-3nN" firstAttribute="top" secondItem="LUE-Op-Dty" secondAttribute="topMargin" id="oGh-i5-IDA"/>
+                                    <constraint firstItem="JOG-2i-QL3" firstAttribute="leading" secondItem="xmY-jh-3nN" secondAttribute="leading" id="p9u-Wq-zUv"/>
+                                    <constraint firstItem="gzA-tu-1aF" firstAttribute="top" secondItem="R2R-zd-97W" secondAttribute="bottom" constant="8" symbolic="YES" id="tgb-eg-0Nf"/>
+                                    <constraint firstItem="bHC-Zd-E7U" firstAttribute="leading" secondItem="xmY-jh-3nN" secondAttribute="trailing" constant="8" symbolic="YES" id="vbl-Ci-6Rb"/>
+                                    <constraint firstItem="JOG-2i-QL3" firstAttribute="trailing" secondItem="LUE-Op-Dty" secondAttribute="trailingMargin" id="y9O-Mk-pXw"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="LUE-Op-Dty" firstAttribute="top" secondItem="kmU-KM-v2Y" secondAttribute="top" id="8Lm-JA-eBk"/>
-                            <constraint firstItem="LUE-Op-Dty" firstAttribute="leading" secondItem="kmU-KM-v2Y" secondAttribute="leading" id="DsQ-oO-szx"/>
-                            <constraint firstItem="LUE-Op-Dty" firstAttribute="bottom" secondItem="fdQ-b9-6sd" secondAttribute="bottom" id="LTP-02-inB"/>
-                            <constraint firstAttribute="trailing" secondItem="LUE-Op-Dty" secondAttribute="trailing" id="t4p-vI-V9Z"/>
+                            <constraint firstItem="LUE-Op-Dty" firstAttribute="leading" secondItem="kmU-KM-v2Y" secondAttribute="leading" id="iRf-ME-cmG"/>
+                            <constraint firstItem="LUE-Op-Dty" firstAttribute="bottom" secondItem="fdQ-b9-6sd" secondAttribute="bottom" id="kOP-Sn-D2m"/>
+                            <constraint firstAttribute="trailing" secondItem="LUE-Op-Dty" secondAttribute="trailing" id="ooX-NF-4Hq"/>
+                            <constraint firstItem="LUE-Op-Dty" firstAttribute="top" secondItem="kmU-KM-v2Y" secondAttribute="top" id="r6c-Op-7rA"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fdQ-b9-6sd"/>
                     </view>
                     <connections>
                         <outlet property="mapView" destination="R2R-zd-97W" id="0eJ-OA-ZAl"/>
                         <outlet property="nameTextField" destination="bHC-Zd-E7U" id="UyA-Vs-29j"/>
+                        <outlet property="overlayView" destination="JOG-2i-QL3" id="Rpt-oW-JSK"/>
                         <outlet property="requestHelpButton" destination="gzA-tu-1aF" id="I4x-0P-re9"/>
                     </connections>
                 </viewController>
