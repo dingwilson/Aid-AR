@@ -78,7 +78,7 @@ class ARViewController: UIViewController, SceneLocationViewDelegate, MGLMapViewD
     }
     
     func loadHazards() {
-        Alamofire.request("https://60f7c599.ngrok.io").responseJSON { response in
+        Alamofire.request("https://mryktvov7a.execute-api.us-east-1.amazonaws.com/prod/users?getproblems=true").responseJSON { response in
             
             guard let jsonData = response.result.value else {
                 print("JSON parse failed")
