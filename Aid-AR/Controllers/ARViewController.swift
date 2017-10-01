@@ -19,6 +19,10 @@ class ARViewController: UIViewController, SceneLocationViewDelegate {
     
     var sceneLocationView = SceneLocationView()
 
+    var annotations : [LocationAnnotationNode] = []
+    
+    var reloadTimer: Timer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,13 +30,35 @@ class ARViewController: UIViewController, SceneLocationViewDelegate {
         
         arView.addSubview(sceneLocationView)
         
+        loadData()
+        
+        reloadTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(loadData), userInfo: nil, repeats: true)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        sceneLocationView.frame = arView.bounds
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        reloadTimer.invalidate()
+    }
+    
+    @objc func loadData() {
         Alamofire.request("https://mryktvov7a.execute-api.us-east-1.amazonaws.com/prod/users?getaids=true").responseJSON { response in
             
             guard let jsonData = response.result.value else {
                 print("JSON parse failed")
                 return
             }
-
+            
+            for node : LocationAnnotationNode in self.annotations {
+                self.sceneLocationView.removeLocationNode(locationNode: node)
+            }
+            
             let json = JSON(jsonData)
             
             for (_,user):(String, JSON) in json {
@@ -54,15 +80,11 @@ class ARViewController: UIViewController, SceneLocationViewDelegate {
                 
                 let annotationNode = LocationAnnotationNode(location: location, image: image)
                 
+                self.annotations.append(annotationNode)
+                
                 self.sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
             }
         }
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        sceneLocationView.frame = arView.bounds
     }
     
     func createFinalImageWith(text: String) -> UIImage? {
