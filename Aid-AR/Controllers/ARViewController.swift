@@ -73,7 +73,7 @@ class ARViewController: UIViewController, SceneLocationViewDelegate {
                 
                 let stringFormattedDistance = String(format: "%.01f", distance)
                 
-                guard let image = self.createFinalImageWith(text: "\(username!)\n\(stringFormattedDistance) meters") else {
+                guard let image = self.createFinalImageWith(text: "\(username!)\n\(stringFormattedDistance)m") else {
                     print("Failed to add text to image")
                     return
                 }
@@ -91,7 +91,7 @@ class ARViewController: UIViewController, SceneLocationViewDelegate {
         
         let image = UIImage(named: "pin")
         
-        let viewToRender = UIView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
+        let viewToRender = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
         
         let imgView = UIImageView(frame: viewToRender.frame)
         
@@ -120,9 +120,9 @@ class ARViewController: UIViewController, SceneLocationViewDelegate {
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = .center
             
-            let attrs = [NSAttributedStringKey.font: UIFont(name: "HelveticaNeue", size: 24)!, NSAttributedStringKey.foregroundColor: UIColor.lightGray, NSAttributedStringKey.paragraphStyle: paragraphStyle]
+            let attrs = [NSAttributedStringKey.font: UIFont(name: "HelveticaNeue", size: 18)!, NSAttributedStringKey.foregroundColor: UIColor.white, NSAttributedStringKey.paragraphStyle: paragraphStyle]
             
-            text.draw(with: CGRect(x: 0, y: size.height / 4, width: size.width, height: size.height), options: .usesLineFragmentOrigin, attributes: attrs, context: nil)
+            text.draw(with: CGRect(x: 0, y: 0, width: size.width, height: size.height), options: .usesLineFragmentOrigin, attributes: attrs, context: nil)
             
         }
         return img
