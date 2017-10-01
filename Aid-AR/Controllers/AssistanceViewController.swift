@@ -52,10 +52,32 @@ class AssistanceViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let givenName = nameTextField.text,
+            givenName != "" {
+            name = givenName
+        } else {
+            name = "Anonymous"
+        }
+        
+        guard let location = locationManager.location else {
+            print("Could not get location.")
+            return
+        }
+        
+        let latitude = location.coordinate.latitude
+        let longitude = location.coordinate.longitude
+        
+        Alamofire.request("https://mryktvov7a.execute-api.us-east-1.amazonaws.com/prod/users?username=\(name)&needsAid=false&latitude=\(latitude)&longitude=\(longitude)").responseJSON { response in
+            if response.response?.statusCode != 200 {
+                print("Error: \(response.response!)")
+            }
+        }
+        
         self.view.endEditing(true)
     }
     
     @IBAction func dismissVC(_ sender: Any) {
+        
         dismiss(animated: true, completion: nil)
     }
     
