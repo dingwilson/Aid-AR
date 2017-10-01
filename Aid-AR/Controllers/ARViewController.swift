@@ -47,12 +47,18 @@ class ARViewController: UIViewController, SceneLocationViewDelegate, MGLMapViewD
         
         arView.addSubview(sceneLocationView)
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        sceneLocationView.addGestureRecognizer(tapGesture)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        sceneLocationView.run()
+        
         loadHazards()
         
         loadData()
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
-        sceneLocationView.addGestureRecognizer(tapGesture)
         
         reloadTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(loadData), userInfo: nil, repeats: true)
     }
@@ -72,7 +78,7 @@ class ARViewController: UIViewController, SceneLocationViewDelegate, MGLMapViewD
     }
     
     func loadHazards() {
-        Alamofire.request("https://54cd0148.ngrok.io").responseJSON { response in
+        Alamofire.request("https://60f7c599.ngrok.io").responseJSON { response in
             
             guard let jsonData = response.result.value else {
                 print("JSON parse failed")
@@ -90,8 +96,6 @@ class ARViewController: UIViewController, SceneLocationViewDelegate, MGLMapViewD
                 let location = CLLocation(coordinate: coordinate, altitude: 150)
 
                 var image : UIImage
-                
-                print(danger!)
                 
                 switch (danger!) {
                 case "electrical":  image = UIImage(named: "signElectrical")!
