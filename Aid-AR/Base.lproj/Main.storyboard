@@ -157,30 +157,68 @@
                                             <action selector="dismissVC:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZF8-Pg-XZm"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TransparentIcon" translatesAutoresizingMaskIntoConstraints="NO" id="pDl-zp-nfb">
+                                        <rect key="frame" x="46" y="28" width="283" height="282"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gzA-tu-1aF">
+                                        <rect key="frame" x="46" y="568" width="285" height="91"/>
+                                        <color key="backgroundColor" red="0.23550905348583351" green="0.48497257859795601" blue="0.80687338082901561" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="91" id="u2W-A6-Sx0"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <state key="normal" title="Request Help">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="requestHelpButtonPressed:" destination="iHh-G0-8Qn" eventType="touchUpInside" id="MNK-rJ-Llk"/>
+                                        </connections>
+                                    </button>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bHC-Zd-E7U">
+                                        <rect key="frame" x="46" y="318" width="283" height="30"/>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="xmY-jh-3nN" firstAttribute="top" secondItem="LUE-Op-Dty" secondAttribute="topMargin" id="3mM-kb-VeN"/>
-                                    <constraint firstItem="xmY-jh-3nN" firstAttribute="leading" secondItem="LUE-Op-Dty" secondAttribute="leadingMargin" id="hLf-A5-7pZ"/>
+                                    <constraint firstItem="xmY-jh-3nN" firstAttribute="top" secondItem="pDl-zp-nfb" secondAttribute="top" id="8z4-Pg-PjL"/>
+                                    <constraint firstItem="pDl-zp-nfb" firstAttribute="trailing" secondItem="bHC-Zd-E7U" secondAttribute="trailing" id="CyJ-8K-Qbz"/>
+                                    <constraint firstItem="gzA-tu-1aF" firstAttribute="bottom" secondItem="LUE-Op-Dty" secondAttribute="bottomMargin" id="FnH-BV-9Ya"/>
+                                    <constraint firstItem="xmY-jh-3nN" firstAttribute="leading" secondItem="LUE-Op-Dty" secondAttribute="leadingMargin" id="K2N-Rm-Pfg"/>
+                                    <constraint firstAttribute="trailing" secondItem="gzA-tu-1aF" secondAttribute="trailing" constant="44" id="KQR-l6-gDZ"/>
+                                    <constraint firstItem="pDl-zp-nfb" firstAttribute="centerX" secondItem="LUE-Op-Dty" secondAttribute="centerX" id="Y0K-zO-a9P"/>
+                                    <constraint firstItem="bHC-Zd-E7U" firstAttribute="centerY" secondItem="LUE-Op-Dty" secondAttribute="centerY" id="YzF-vJ-0v3"/>
+                                    <constraint firstItem="bHC-Zd-E7U" firstAttribute="top" secondItem="pDl-zp-nfb" secondAttribute="bottom" constant="8" symbolic="YES" id="e3D-BX-jAN"/>
+                                    <constraint firstItem="pDl-zp-nfb" firstAttribute="leading" secondItem="LUE-Op-Dty" secondAttribute="leading" constant="46" id="kBF-JC-Mhy"/>
+                                    <constraint firstItem="xmY-jh-3nN" firstAttribute="top" secondItem="LUE-Op-Dty" secondAttribute="topMargin" id="kjt-z1-NAr"/>
+                                    <constraint firstItem="pDl-zp-nfb" firstAttribute="leading" secondItem="bHC-Zd-E7U" secondAttribute="leading" id="n8t-np-ePR"/>
+                                    <constraint firstItem="bHC-Zd-E7U" firstAttribute="leading" secondItem="gzA-tu-1aF" secondAttribute="leading" id="xey-sS-fDP"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="LUE-Op-Dty" secondAttribute="trailing" id="4fH-yr-Fwj"/>
-                            <constraint firstItem="LUE-Op-Dty" firstAttribute="bottom" secondItem="fdQ-b9-6sd" secondAttribute="bottom" id="BE1-0d-0of"/>
-                            <constraint firstItem="LUE-Op-Dty" firstAttribute="top" secondItem="kmU-KM-v2Y" secondAttribute="top" id="Otg-Q6-gGH"/>
-                            <constraint firstItem="LUE-Op-Dty" firstAttribute="leading" secondItem="kmU-KM-v2Y" secondAttribute="leading" id="Udh-C4-pzf"/>
+                            <constraint firstItem="LUE-Op-Dty" firstAttribute="bottom" secondItem="fdQ-b9-6sd" secondAttribute="bottom" id="D9W-Fq-g3J"/>
+                            <constraint firstItem="LUE-Op-Dty" firstAttribute="leading" secondItem="kmU-KM-v2Y" secondAttribute="leading" id="HJd-fk-Ndu"/>
+                            <constraint firstItem="LUE-Op-Dty" firstAttribute="top" secondItem="kmU-KM-v2Y" secondAttribute="top" id="NS6-X1-rMX"/>
+                            <constraint firstAttribute="trailing" secondItem="LUE-Op-Dty" secondAttribute="trailing" id="mgP-AU-KgJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="fdQ-b9-6sd"/>
                     </view>
+                    <connections>
+                        <outlet property="nameTextField" destination="bHC-Zd-E7U" id="UyA-Vs-29j"/>
+                        <outlet property="requestHelpButton" destination="gzA-tu-1aF" id="I4x-0P-re9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WrY-0a-QGh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="518" y="392"/>
+            <point key="canvasLocation" x="517.60000000000002" y="391.75412293853077"/>
         </scene>
     </scenes>
     <resources>
         <image name="LogoName" width="1920" height="480"/>
+        <image name="TransparentIcon" width="1024" height="1024"/>
         <image name="backArrow" width="48" height="48"/>
     </resources>
 </document>

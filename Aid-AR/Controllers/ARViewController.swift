@@ -32,7 +32,7 @@ class ARViewController: UIViewController, SceneLocationViewDelegate {
         
         loadData()
         
-        reloadTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(loadData), userInfo: nil, repeats: true)
+        reloadTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(loadData), userInfo: nil, repeats: true)
     }
     
     override func viewDidLayoutSubviews() {
