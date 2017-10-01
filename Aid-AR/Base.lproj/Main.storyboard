@@ -250,6 +250,7 @@
                         <outlet property="nameTextField" destination="bHC-Zd-E7U" id="UyA-Vs-29j"/>
                         <outlet property="overlayView" destination="JOG-2i-QL3" id="Rpt-oW-JSK"/>
                         <outlet property="requestHelpButton" destination="gzA-tu-1aF" id="I4x-0P-re9"/>
+                        <outlet property="textOutput" destination="4OR-4P-vtw" id="xm5-hG-aK0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WrY-0a-QGh" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import SwiftyJSON
 import CoreLocation
 import Mapbox
 import PKHUD
@@ -21,6 +22,8 @@ class AssistanceViewController: UIViewController, CLLocationManagerDelegate, MGL
     
     @IBOutlet weak var overlayView: UIView!
     
+    @IBOutlet weak var textOutput: UILabel!
+    
     var compass : MBXRectangularMapView!
     
     var name : String = ""
@@ -28,6 +31,8 @@ class AssistanceViewController: UIViewController, CLLocationManagerDelegate, MGL
     var currentlyRequestingAid = false
     
     var locationManager : CLLocationManager!
+    
+    var reloadTimer: Timer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,6 +66,8 @@ class AssistanceViewController: UIViewController, CLLocationManagerDelegate, MGL
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        reloadTimer.invalidate()
         
         if currentlyRequestingAid {
             if let givenName = nameTextField.text,
@@ -112,10 +119,15 @@ class AssistanceViewController: UIViewController, CLLocationManagerDelegate, MGL
         
         if currentlyRequestingAid {
             requestHelpButton.setTitle("You're in good hands.", for: .normal)
+            requestHelpButton.titleLabel?.textAlignment = NSTextAlignment.center
             overlayView.isHidden = false
             HUD.show(.progress)
+            
+            reloadTimer = Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(checkRescue), userInfo: nil, repeats: true)
         } else {
             requestHelpButton.setTitle("Request Help", for: .normal)
+            requestHelpButton.titleLabel?.textAlignment = NSTextAlignment.center
+            reloadTimer.invalidate()
             HUD.show(.error)
             overlayView.isHidden = true
             HUD.hide(afterDelay: 2.0)
@@ -125,6 +137,66 @@ class AssistanceViewController: UIViewController, CLLocationManagerDelegate, MGL
     @objc
     func handleTap(_ gestureRecognize: UIGestureRecognizer) {
         self.view.endEditing(true)
+    }
+    
+    @objc
+    func checkRescue() {
+        if let givenName = nameTextField.text,
+            givenName != "" {
+            name = givenName
+        } else {
+            name = "Anonymous"
+        }
+        
+        Alamofire.request("https://mryktvov7a.execute-api.us-east-1.amazonaws.com/prod/users?getUser=true&username=\(name)").responseJSON { response in
+            
+            guard let jsonData = response.result.value else {
+                print("JSON parse failed")
+                return
+            }
+            
+            let json = JSON(jsonData)
+            
+            let user = json["Item"]
+            
+            print(user)
+            
+            if user["rescuer"].exists() {
+                self.textOutput.text = "Success! \(user["rescuer"].stringValue) is on their way!"
+                HUD.flash(.success, delay: 2.0)
+                
+                let when = DispatchTime.now() + 3
+                DispatchQueue.main.asyncAfter(deadline: when) {
+                    self.currentlyRequestingAid = false
+                    self.reloadTimer.invalidate()
+                    self.overlayView.isHidden = true
+                    self.textOutput.text = "Finding a local Aid-AR dispatch..."
+                    self.requestHelpButton.titleLabel?.text = "Request Help"
+                    self.requestHelpButton.titleLabel?.textAlignment = NSTextAlignment.center
+                }
+                
+                if let givenName = self.nameTextField.text,
+                    givenName != "" {
+                    self.name = givenName
+                } else {
+                    self.name = "Anonymous"
+                }
+                
+                guard let location = self.locationManager.location else {
+                    print("Could not get location.")
+                    return
+                }
+                
+                let latitude = location.coordinate.latitude
+                let longitude = location.coordinate.longitude
+                
+                Alamofire.request("https://mryktvov7a.execute-api.us-east-1.amazonaws.com/prod/users?username=\(self.name)&needsAid=false&latitude=\(latitude)&longitude=\(longitude)").responseJSON { response in
+                    if response.response?.statusCode != 200 {
+                        print("Error: \(response.response!)")
+                    }
+                }
+            }
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
