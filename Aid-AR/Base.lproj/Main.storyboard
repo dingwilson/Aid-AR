@@ -28,11 +28,12 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r0F-Fb-QLO">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="331"/>
+                                        <color key="backgroundColor" red="0.32435892253842274" green="0.39985889764132926" blue="0.80687338082901561" alpha="0.33079335387323944" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="331" id="bRh-ag-ltb"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="50"/>
-                                        <state key="normal" title="Give Aid">
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="55"/>
+                                        <state key="normal" title="Aid">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -41,8 +42,9 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zUM-EF-0Wa">
                                         <rect key="frame" x="0.0" y="331" width="375" height="336"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="50"/>
-                                        <state key="normal" title="Get Aid">
+                                        <color key="backgroundColor" red="0.80687338082901561" green="0.27434866495596688" blue="0.23551891311478007" alpha="0.33079335387323944" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="55"/>
+                                        <state key="normal" title="Recieve Aid">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -98,10 +100,6 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NuK-Rw-oPf">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ILD-f0-PKo">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhW-0o-RE2">
                                         <rect key="frame" x="8" y="28" width="48" height="48"/>
@@ -111,22 +109,19 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="vhW-0o-RE2" firstAttribute="top" secondItem="ILD-f0-PKo" secondAttribute="topMargin" id="YLM-In-BRP"/>
-                                    <constraint firstItem="vhW-0o-RE2" firstAttribute="leading" secondItem="ILD-f0-PKo" secondAttribute="leadingMargin" id="hsS-pL-Byf"/>
+                                    <constraint firstItem="vhW-0o-RE2" firstAttribute="leading" secondItem="NuK-Rw-oPf" secondAttribute="leadingMargin" id="c2R-Mk-egh"/>
+                                    <constraint firstItem="vhW-0o-RE2" firstAttribute="top" secondItem="NuK-Rw-oPf" secondAttribute="topMargin" id="dvp-2o-pGY"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ILD-f0-PKo" firstAttribute="top" secondItem="NuK-Rw-oPf" secondAttribute="top" id="FNW-6u-VbP"/>
-                            <constraint firstItem="ILD-f0-PKo" firstAttribute="trailing" secondItem="NuK-Rw-oPf" secondAttribute="trailing" id="Pxv-4H-Rkp"/>
-                            <constraint firstItem="NuK-Rw-oPf" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="QMg-RB-9Ak"/>
-                            <constraint firstAttribute="trailing" secondItem="NuK-Rw-oPf" secondAttribute="trailing" id="VEF-vK-Rbz"/>
-                            <constraint firstItem="NuK-Rw-oPf" firstAttribute="leading" secondItem="ILD-f0-PKo" secondAttribute="leading" id="m6N-Vb-1QZ"/>
-                            <constraint firstItem="ILD-f0-PKo" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="p1T-bZ-0Kq"/>
-                            <constraint firstItem="ILD-f0-PKo" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="wHX-Vp-d7C"/>
-                            <constraint firstItem="ILD-f0-PKo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="wxd-wA-Box"/>
+                            <constraint firstItem="NuK-Rw-oPf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="LaV-Un-poc"/>
+                            <constraint firstItem="NuK-Rw-oPf" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="j6k-Ta-rVG"/>
+                            <constraint firstAttribute="trailing" secondItem="NuK-Rw-oPf" secondAttribute="trailing" id="xXY-LB-oCp"/>
+                            <constraint firstItem="NuK-Rw-oPf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="yjv-1B-qW0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

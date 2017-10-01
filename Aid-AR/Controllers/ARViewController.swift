@@ -32,6 +32,9 @@ class ARViewController: UIViewController, SceneLocationViewDelegate {
         
         loadData()
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        sceneLocationView.addGestureRecognizer(tapGesture)
+        
         reloadTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(loadData), userInfo: nil, repeats: true)
     }
     
@@ -43,6 +46,8 @@ class ARViewController: UIViewController, SceneLocationViewDelegate {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        sceneLocationView.pause()
         
         reloadTimer.invalidate()
     }
@@ -73,7 +78,7 @@ class ARViewController: UIViewController, SceneLocationViewDelegate {
                 
                 let stringFormattedDistance = String(format: "%.01f", distance)
                 
-                guard let image = self.createFinalImageWith(text: "\(username!)\n\(stringFormattedDistance)m") else {
+                guard let image = self.createFinalImageWith(text: "\(username!)\n\(stringFormattedDistance)m", image: "pin") else {
                     print("Failed to add text to image")
                     return
                 }
@@ -87,9 +92,8 @@ class ARViewController: UIViewController, SceneLocationViewDelegate {
         }
     }
     
-    func createFinalImageWith(text: String) -> UIImage? {
-        
-        let image = UIImage(named: "pin")
+    func createFinalImageWith(text: String, image: String) -> UIImage? {
+        let image = UIImage(named: image)
         
         let viewToRender = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
         
@@ -126,6 +130,36 @@ class ARViewController: UIViewController, SceneLocationViewDelegate {
             
         }
         return img
+    }
+    
+    @objc
+    func handleTap(_ gestureRecognize: UIGestureRecognizer) {
+        let scnView = self.sceneLocationView as! SCNView
+        
+        let p = gestureRecognize.location(in: scnView)
+        let hitResults = scnView.hitTest(p, options: [:])
+        
+        if hitResults.count > 0 {
+            let result = hitResults[0]
+            
+            let material = result.node.geometry!.firstMaterial!
+            
+            SCNTransaction.begin()
+            SCNTransaction.animationDuration = 1
+            
+            SCNTransaction.completionBlock = {
+                SCNTransaction.begin()
+                SCNTransaction.animationDuration = 1
+                
+                material.emission.contents = UIColor.black
+                
+                SCNTransaction.commit()
+            }
+            
+            material.emission.contents = UIColor.red
+            
+            SCNTransaction.commit()
+        }
     }
     
     @IBAction func dismissVC(_ sender: Any) {

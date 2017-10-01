@@ -45,8 +45,14 @@ class AssistanceViewController: UIViewController, CLLocationManagerDelegate {
         let longitude = location.coordinate.longitude
         
         Alamofire.request("https://mryktvov7a.execute-api.us-east-1.amazonaws.com/prod/users?username=\(name)&needsAid=true&latitude=\(latitude)&longitude=\(longitude)").responseJSON { response in
-            print(response.response!)
+            if response.response?.statusCode != 200 {
+                print("Error: \(response.response!)")
+            }
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     @IBAction func dismissVC(_ sender: Any) {
