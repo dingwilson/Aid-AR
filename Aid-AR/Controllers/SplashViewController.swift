@@ -12,10 +12,12 @@ class SplashViewController: UIViewController {
 
     @IBOutlet weak var backgroundVideo: BackgroundVideo!
     
+    @IBOutlet weak var logoImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        backgroundVideo.createBackgroundVideo(name: "Background", type: "mp4", alpha: 0.2)
+        backgroundVideo.createBackgroundVideo(name: "Background", type: "mp4", alpha: 0.1)
     }
     
     /*

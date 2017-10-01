@@ -138,9 +138,9 @@ class ARViewController: UIViewController, SceneLocationViewDelegate, MGLMapViewD
                 let coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude!), longitude: CLLocationDegrees(longitude!))
                 let location = CLLocation(coordinate: coordinate, altitude: 150)
                 
-                let distance = (self.sceneLocationView.currentLocation()?.distance(from: CLLocation(latitude: latitude!, longitude: longitude!)))!   // meters to miles
+                let distance = self.sceneLocationView.currentLocation()?.distance(from: CLLocation(latitude: latitude!, longitude: longitude!))
                 
-                let stringFormattedDistance = String(format: "%.01f", distance)
+                let stringFormattedDistance = String(format: "%.01f", distance!)
                 
                 guard let image = self.createFinalImageWith(text: "\(username!)\n\(stringFormattedDistance)m", image: "pin") else {
                     print("Failed to add text to image")

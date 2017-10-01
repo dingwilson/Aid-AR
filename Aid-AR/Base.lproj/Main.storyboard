@@ -84,6 +84,7 @@
                     </view>
                     <connections>
                         <outlet property="backgroundVideo" destination="YH4-fY-LIO" id="Hlu-aV-rpM"/>
+                        <outlet property="logoImageView" destination="ay9-EC-GIl" id="pzq-1r-oHK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QYD-gS-b06" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -176,7 +177,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="94" id="JcP-bK-XnV"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                         <state key="normal" title="Request Help">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
@@ -187,7 +188,6 @@
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bHC-Zd-E7U">
                                         <rect key="frame" x="64" y="32" width="303" height="40"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>

@@ -46,6 +46,9 @@ class AssistanceViewController: UIViewController, CLLocationManagerDelegate, MGL
         compass.tintColor = .black
         compass.delegate = self
         mapView.addSubview(compass)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        mapView.addGestureRecognizer(tapGesture)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -104,6 +107,11 @@ class AssistanceViewController: UIViewController, CLLocationManagerDelegate, MGL
         } else {
             requestHelpButton.setTitle("Request Help", for: .normal)
         }
+    }
+    
+    @objc
+    func handleTap(_ gestureRecognize: UIGestureRecognizer) {
+        self.view.endEditing(true)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
