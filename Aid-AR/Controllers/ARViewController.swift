@@ -107,6 +107,19 @@ class ARViewController: UIViewController, SceneLocationViewDelegate, MGLMapViewD
                 self.sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
             }
         }
+        
+        if let location = sceneLocationView.currentLocation() {
+            let latitude = location.coordinate.latitude
+            let longitude = location.coordinate.longitude
+            
+            Alamofire.request("https://mryktvov7a.execute-api.us-east-1.amazonaws.com/prod/users?username=Anonymous&needsAid=false&latitude=\(latitude)&longitude=\(longitude)").responseJSON { response in
+                if response.response?.statusCode != 200 {
+                    print("Error: \(response.response!)")
+                }
+            }
+        } else {
+            print("Could not get location")
+        }
     }
     
     func createFinalImageWith(text: String, image: String) -> UIImage? {

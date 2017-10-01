@@ -22,6 +22,8 @@ class AssistanceViewController: UIViewController, CLLocationManagerDelegate, MGL
     
     var name : String = ""
     
+    var currentlyRequestingAid = false
+    
     var locationManager : CLLocationManager!
     
     override func viewDidLoad() {
@@ -46,30 +48,36 @@ class AssistanceViewController: UIViewController, CLLocationManagerDelegate, MGL
         mapView.addSubview(compass)
     }
     
-    @IBAction func requestHelpButtonPressed(_ sender: Any) {
-        if let givenName = nameTextField.text,
-            givenName != "" {
-            name = givenName
-        } else {
-            name = "Anonymous"
-        }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         
-        guard let location = locationManager.location else {
-            print("Could not get location.")
-            return
-        }
-        
-        let latitude = location.coordinate.latitude
-        let longitude = location.coordinate.longitude
-        
-        Alamofire.request("https://mryktvov7a.execute-api.us-east-1.amazonaws.com/prod/users?username=\(name)&needsAid=true&latitude=\(latitude)&longitude=\(longitude)").responseJSON { response in
-            if response.response?.statusCode != 200 {
-                print("Error: \(response.response!)")
+        if currentlyRequestingAid {
+            if let givenName = nameTextField.text,
+                givenName != "" {
+                name = givenName
+            } else {
+                name = "Anonymous"
+            }
+            
+            guard let location = locationManager.location else {
+                print("Could not get location.")
+                return
+            }
+            
+            let latitude = location.coordinate.latitude
+            let longitude = location.coordinate.longitude
+            
+            Alamofire.request("https://mryktvov7a.execute-api.us-east-1.amazonaws.com/prod/users?username=\(name)&needsAid=false&latitude=\(latitude)&longitude=\(longitude)").responseJSON { response in
+                if response.response?.statusCode != 200 {
+                    print("Error: \(response.response!)")
+                }
             }
         }
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+    @IBAction func requestHelpButtonPressed(_ sender: Any) {
+        currentlyRequestingAid = !currentlyRequestingAid
+        
         if let givenName = nameTextField.text,
             givenName != "" {
             name = givenName
@@ -85,12 +93,20 @@ class AssistanceViewController: UIViewController, CLLocationManagerDelegate, MGL
         let latitude = location.coordinate.latitude
         let longitude = location.coordinate.longitude
         
-        Alamofire.request("https://mryktvov7a.execute-api.us-east-1.amazonaws.com/prod/users?username=\(name)&needsAid=false&latitude=\(latitude)&longitude=\(longitude)").responseJSON { response in
+        Alamofire.request("https://mryktvov7a.execute-api.us-east-1.amazonaws.com/prod/users?username=\(name)&needsAid=\(currentlyRequestingAid)&latitude=\(latitude)&longitude=\(longitude)").responseJSON { response in
             if response.response?.statusCode != 200 {
                 print("Error: \(response.response!)")
             }
         }
         
+        if currentlyRequestingAid {
+            requestHelpButton.setTitle("Requesting help.\nPress to Cancel.", for: .normal)
+        } else {
+            requestHelpButton.setTitle("Request Help", for: .normal)
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     
@@ -100,7 +116,6 @@ class AssistanceViewController: UIViewController, CLLocationManagerDelegate, MGL
     }
     
     @IBAction func dismissVC(_ sender: Any) {
-        
         dismiss(animated: true, completion: nil)
     }
     
