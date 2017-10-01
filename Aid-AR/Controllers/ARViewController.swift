@@ -8,14 +8,20 @@
 
 import UIKit
 import SceneKit
+import ARKit
 import ARCL
 import CoreLocation
 import Alamofire
 import SwiftyJSON
+import Mapbox
 
-class ARViewController: UIViewController, SceneLocationViewDelegate {
+class ARViewController: UIViewController, SceneLocationViewDelegate, MGLMapViewDelegate, ARSCNViewDelegate {
     
     @IBOutlet weak var arView: UIView!
+
+    @IBOutlet weak var compassView: UIView!
+    
+    var compass : MBXCompassMapView!
     
     var sceneLocationView = SceneLocationView()
 
@@ -25,6 +31,17 @@ class ARViewController: UIViewController, SceneLocationViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        compass = MBXCompassMapView(frame: CGRect(x: 0,
+                                                  y: 0,
+                                                  width: 150,
+                                                  height: 150),
+                                    styleURL: URL(string: "mapbox://styles/mapbox/light-v9"))
+        
+        compass.isMapInteractive = false
+        compass.tintColor = .black
+        compass.delegate = self
+        compassView.addSubview(compass)
         
         sceneLocationView.run()
         
@@ -134,7 +151,7 @@ class ARViewController: UIViewController, SceneLocationViewDelegate {
     
     @objc
     func handleTap(_ gestureRecognize: UIGestureRecognizer) {
-        let scnView = self.sceneLocationView as! SCNView
+        let scnView = self.sceneLocationView
         
         let p = gestureRecognize.location(in: scnView)
         let hitResults = scnView.hitTest(p, options: [:])
@@ -145,11 +162,11 @@ class ARViewController: UIViewController, SceneLocationViewDelegate {
             let material = result.node.geometry!.firstMaterial!
             
             SCNTransaction.begin()
-            SCNTransaction.animationDuration = 1
+            SCNTransaction.animationDuration = 0.5
             
             SCNTransaction.completionBlock = {
                 SCNTransaction.begin()
-                SCNTransaction.animationDuration = 1
+                SCNTransaction.animationDuration = 0.5
                 
                 material.emission.contents = UIColor.black
                 
@@ -159,6 +176,8 @@ class ARViewController: UIViewController, SceneLocationViewDelegate {
             material.emission.contents = UIColor.red
             
             SCNTransaction.commit()
+            
+            
         }
     }
     

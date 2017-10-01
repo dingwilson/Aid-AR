@@ -9,5 +9,6 @@ target 'Aid-AR' do
   pod 'ARCL'
   pod 'Alamofire', '~> 4.5'
   pod 'SwiftyJSON'
+  pod 'Mapbox-iOS-SDK-symbols', :podspec => 'https://raw.githubusercontent.com/mapbox/mapbox-gl-native/ios-v3.6.1/platform/ios/Mapbox-iOS-SDK-symbols.podspec'
 
 end

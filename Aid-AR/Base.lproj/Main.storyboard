@@ -98,35 +98,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NuK-Rw-oPf">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NuK-Rw-oPf">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yJw-qX-WaS">
+                                <rect key="frame" x="16" y="20" width="48" height="52"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhW-0o-RE2">
-                                        <rect key="frame" x="8" y="28" width="48" height="48"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vhW-0o-RE2">
+                                        <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="backArrow"/>
                                         <connections>
                                             <action selector="dismissVC:" destination="BYZ-38-t0r" eventType="touchUpInside" id="EUN-7v-YyF"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="vhW-0o-RE2" firstAttribute="leading" secondItem="NuK-Rw-oPf" secondAttribute="leadingMargin" id="c2R-Mk-egh"/>
-                                    <constraint firstItem="vhW-0o-RE2" firstAttribute="top" secondItem="NuK-Rw-oPf" secondAttribute="topMargin" id="dvp-2o-pGY"/>
-                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Spe-Tc-wqu">
+                                <rect key="frame" x="209" y="20" width="150" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="NuK-Rw-oPf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="LaV-Un-poc"/>
-                            <constraint firstItem="NuK-Rw-oPf" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="j6k-Ta-rVG"/>
-                            <constraint firstAttribute="trailing" secondItem="NuK-Rw-oPf" secondAttribute="trailing" id="xXY-LB-oCp"/>
-                            <constraint firstItem="NuK-Rw-oPf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="yjv-1B-qW0"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="arView" destination="NuK-Rw-oPf" id="L0v-lP-89a"/>
+                        <outlet property="compassView" destination="Spe-Tc-wqu" id="jul-hB-Sdt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

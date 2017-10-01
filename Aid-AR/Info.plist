@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>MGLMapboxMetricsEnabledSettingShownInApp</key>
+	<string>YES</string>
+	<key>MGLMapboxAccessToken</key>
+	<string>pk.eyJ1IjoiZGluZ3dpbHNvbiIsImEiOiJjajg4ZTU1bHMxaHEyMzJwbHN6enV5YXJkIn0.AVQo8iHchvt5gbpyuDVNUA</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Aid-AR needs to use your location</string>
 	<key>CFBundleDevelopmentRegion</key>
