@@ -47,6 +47,8 @@ class ARViewController: UIViewController, SceneLocationViewDelegate, MGLMapViewD
         
         arView.addSubview(sceneLocationView)
         
+        loadHazards()
+        
         loadData()
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
@@ -67,6 +69,47 @@ class ARViewController: UIViewController, SceneLocationViewDelegate, MGLMapViewD
         sceneLocationView.pause()
         
         reloadTimer.invalidate()
+    }
+    
+    func loadHazards() {
+        Alamofire.request("https://54cd0148.ngrok.io").responseJSON { response in
+            
+            guard let jsonData = response.result.value else {
+                print("JSON parse failed")
+                return
+            }
+            
+            let json = JSON(jsonData)
+            
+            for (_,hazard):(String, JSON) in json {
+                let latitude = hazard["latitude"].double
+                let longitude = hazard["longitude"].double
+                let danger = hazard["danger"].string
+                
+                let coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude!), longitude: CLLocationDegrees(longitude!))
+                let location = CLLocation(coordinate: coordinate, altitude: 150)
+
+                var image : UIImage
+                
+                print(danger!)
+                
+                switch (danger!) {
+                case "electrical":  image = UIImage(named: "signElectrical")!
+                                    break
+                case "flood":       image = UIImage(named: "signFlood")!
+                                    break
+                case "fire" :       image = UIImage(named: "signFire")!
+                                    break
+                default:            return
+                }
+                
+                let smallerImage = self.generateSmallerImage(image: image)
+                
+                let annotationNode = LocationAnnotationNode(location: location, image: smallerImage!)
+                
+                self.sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
+            }
+        }
     }
     
     @objc func loadData() {
@@ -120,6 +163,23 @@ class ARViewController: UIViewController, SceneLocationViewDelegate, MGLMapViewD
         } else {
             print("Could not get location")
         }
+    }
+    
+    func generateSmallerImage(image: UIImage) -> UIImage? {
+        let viewToRender = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        
+        let imgView = UIImageView(frame: viewToRender.frame)
+        
+        imgView.image = image
+        
+        viewToRender.addSubview(imgView)
+        
+        UIGraphicsBeginImageContextWithOptions(viewToRender.frame.size, false, 0)
+        viewToRender.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let finalImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return finalImage
     }
     
     func createFinalImageWith(text: String, image: String) -> UIImage? {
