@@ -103,7 +103,7 @@ class AssistanceViewController: UIViewController, CLLocationManagerDelegate, MGL
         }
         
         if currentlyRequestingAid {
-            requestHelpButton.setTitle("Requesting help.\nPress to Cancel.", for: .normal)
+            requestHelpButton.setTitle("You're in good hands.", for: .normal)
         } else {
             requestHelpButton.setTitle("Request Help", for: .normal)
         }
