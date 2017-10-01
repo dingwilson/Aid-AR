@@ -9,11 +9,16 @@
 import UIKit
 import Alamofire
 import CoreLocation
+import Mapbox
 
-class AssistanceViewController: UIViewController, CLLocationManagerDelegate {
+class AssistanceViewController: UIViewController, CLLocationManagerDelegate, MGLMapViewDelegate, UITextFieldDelegate {
     @IBOutlet weak var nameTextField: UITextField!
     
     @IBOutlet weak var requestHelpButton: UIButton!
+    
+    @IBOutlet weak var mapView: UIView!
+    
+    var compass : MBXRectangularMapView!
     
     var name : String = ""
     
@@ -21,11 +26,24 @@ class AssistanceViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        nameTextField.delegate = self
 
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
+        
+        compass = MBXRectangularMapView(frame: CGRect(x: 0,
+                                                  y: 0,
+                                                  width: 359,
+                                                  height: 473),
+                                    styleURL: URL(string: "mapbox://styles/mapbox/dark-v9"))
+        
+        compass.isMapInteractive = false
+        compass.tintColor = .black
+        compass.delegate = self
+        mapView.addSubview(compass)
     }
     
     @IBAction func requestHelpButtonPressed(_ sender: Any) {
@@ -74,6 +92,11 @@ class AssistanceViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true;
     }
     
     @IBAction func dismissVC(_ sender: Any) {

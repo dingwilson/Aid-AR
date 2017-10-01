@@ -17,6 +17,7 @@
 		C802912C1F802E330072E2D2 /* Background.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = C802912B1F802E330072E2D2 /* Background.mp4 */; };
 		C802912E1F8041EF0072E2D2 /* AssistanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C802912D1F8041EF0072E2D2 /* AssistanceViewController.swift */; };
 		C802913A1F80D0810072E2D2 /* MBXCompassMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80291391F80D0810072E2D2 /* MBXCompassMapView.swift */; };
+		C802913C1F80DB950072E2D2 /* MBXRectangularMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C802913B1F80DB950072E2D2 /* MBXRectangularMapView.swift */; };
 		CF813C3D80DB1604429229A0 /* Pods_Aid_AR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44023A8627D6122BD15C3F53 /* Pods_Aid_AR.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,7 @@
 		C802912B1F802E330072E2D2 /* Background.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Background.mp4; sourceTree = "<group>"; };
 		C802912D1F8041EF0072E2D2 /* AssistanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AssistanceViewController.swift; path = Controllers/AssistanceViewController.swift; sourceTree = "<group>"; };
 		C80291391F80D0810072E2D2 /* MBXCompassMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MBXCompassMapView.swift; path = Controllers/MBXCompassMapView.swift; sourceTree = "<group>"; };
+		C802913B1F80DB950072E2D2 /* MBXRectangularMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MBXRectangularMapView.swift; path = Controllers/MBXRectangularMapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				C80291391F80D0810072E2D2 /* MBXCompassMapView.swift */,
+				C802913B1F80DB950072E2D2 /* MBXRectangularMapView.swift */,
 				C80291281F802BDC0072E2D2 /* SwiftVideoBackground.swift */,
 				C80291251F8028630072E2D2 /* SplashViewController.swift */,
 				C80291231F8020BA0072E2D2 /* ARViewController.swift */,
@@ -241,6 +244,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C802913C1F80DB950072E2D2 /* MBXRectangularMapView.swift in Sources */,
 				C802913A1F80D0810072E2D2 /* MBXCompassMapView.swift in Sources */,
 				C80291261F8028630072E2D2 /* SplashViewController.swift in Sources */,
 				C80291291F802BDC0072E2D2 /* SwiftVideoBackground.swift in Sources */,

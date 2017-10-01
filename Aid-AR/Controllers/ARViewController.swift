@@ -15,7 +15,7 @@ import Alamofire
 import SwiftyJSON
 import Mapbox
 
-class ARViewController: UIViewController, SceneLocationViewDelegate, MGLMapViewDelegate, ARSCNViewDelegate {
+class ARViewController: UIViewController, SceneLocationViewDelegate, MGLMapViewDelegate {
     
     @IBOutlet weak var arView: UIView!
 
